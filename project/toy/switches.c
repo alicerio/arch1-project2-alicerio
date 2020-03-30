@@ -35,26 +35,29 @@ switch_interrupt_handler()
   }
   else if (!(p2val & SW4)) {
     tempo = 50;
-    MarioTheme();
+    FirstTheme();
     switch_state_down = 1;
+    led_update();
   }
   else if (!(p2val & SW3)) {
     tempo = 22;
     starTheme();
     switch_state_down = 1;
+    led_update();
   }
   else if (!(p2val & SW2)) {
     tempo = 97;
     ironManTheme();
     switch_state_down = 1;
+    led_update();
   }
   else if (!(p2val & SW1)) {
     tempo = 120;
-    starWars();
+    SecondTheme();
     switch_state_down = 1;
+    led_update();
   }
   switch_state_changed = 1;
-  led_update();
 }
 
     

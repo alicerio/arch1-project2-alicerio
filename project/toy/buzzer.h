@@ -3,9 +3,9 @@
 
 void buzzer_init();
 void buzzer_set_period(short cycles);
-void MarioTheme();
+void FirstTheme();
 void starTheme();
 void ironManTheme();
-void starWars();
+void SecondTheme();
 
 #endif // included

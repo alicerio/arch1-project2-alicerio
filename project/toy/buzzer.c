@@ -3,8 +3,8 @@
 #include "buzzer.h"
 
 static int ironManSong = 0;
-static int marioSong = 0;
-static int starWarsSong = 0;
+static int firstSong = 0;
+static int secondSong = 0;
 static int starSong = 0;
 
 void buzzer_init()
@@ -49,43 +49,42 @@ void ironManTheme(){
   }
 }
 
-void MarioTheme() {
-  switch(marioSong) {
+void FirstTheme() {
+  switch(firstSong) {
   case 0:
   case 1:
   case 2:
-  case 4: buzzer_set_period(750); marioSong++; break;
-  case 3: buzzer_set_period(950); marioSong++; break;
-  case 5: buzzer_set_period(630); marioSong++; break;
-  case 6: buzzer_set_period(1260); marioSong++; break;
+  case 4: buzzer_set_period(400); firstSong++; break;
+  case 3: buzzer_set_period(670); firstSong++; break;
+  case 5: buzzer_set_period(934); firstSong++; break;
+  case 6: buzzer_set_period(1000); firstSong++; break;
   }
 }
 
-void starWars() {
-  switch(starWarsSong) {
-  case 0: buzzer_set_period(950); starWarsSong++; break;
+void SecondTheme() {
+  switch(secondSong) {
+  case 0: buzzer_set_period(950); secondSong++; break;
   case 1:
   case 6:
-  case 11: buzzer_set_period(630); starWarsSong++; break;
+  case 11: buzzer_set_period(740); secondSong++; break;
   case 2:
   case 7:
   case 12:
-  case 14: buzzer_set_period(710); starWarsSong++; break;
+  case 14: buzzer_set_period(630); secondSong++; break;
   case 3:
-  case 8:
-  case 13: buzzer_set_period(750); starWarsSong++; break;
+  case 13: buzzer_set_period(870); secondSong++; break;
   case 4:
   case 9:
-  case 15: buzzer_set_period(840);
-    if(starWarsSong == 15) {
-      starWarsSong = 0;
+  case 15: buzzer_set_period(590);
+    if(secondSong == 15) {
+      secondSong = 0;
     }
     else {
-      starWarsSong++;
+      secondSong++;
     }
     break;
   case 5:
-  case 10: buzzer_set_period(475); starWarsSong++; break;
+  case 10: buzzer_set_period(700); secondSong++; break;
   }
 }
 
