@@ -1,8 +1,10 @@
-	        .data		;
-starSong:	.word 0
+	
+	.data			;
+StarSong:
+	.word 0
 
 	.text			;
-jt:	.word case0		;
+switch:	.word case0		;
 	.word case1		;
 	.word case2		;
 	.word case3		;
@@ -22,8 +24,45 @@ jt:	.word case0		;
 	.word case14		;
 
 	.global starTheme
-starTheme:	cmp #4, &starSong ;
+starTheme:
+	cmp #18, &starSong	
+	jnc case0		
+	mov &starSong, r12
+	add r12, r12
+	mov switch(r12), r0
+
+case1:
+case2:
+case3:
+case4:
+case6:
+case8:	mov #950, r12
+	call buzzer_set_period
+	add #1, &starTheme
+	jmp end
+case5:
+case7:	mov #1130, r12
+	call buzzer_set_period
+	add #1, &starTheme
+	jmp end
+case9:
+case10:
+case11:
+case12:
+case13:
+case15:
+case17:	mov #1000, r12
+	call buzzer_set_period
+	add #1, &starTheme
+	jmp end
+case14:
+case16:	mov #1270, r12
+	call buzzer_set_period
+	add #1, &starTheme
+	jmp end
 	
+end: pop r0	
+
 	
 	
 	
