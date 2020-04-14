@@ -5,10 +5,10 @@
 #include "switches.h"
 
 void main() {
-  configureClocks();
-  switch_init();
-  buzzer_init();
-  led_init();
-  enableWDTInterrupts();
+  configureClocks();         // Configures the clock from the libTimer file
+  switch_init();             // Initializes switches
+  buzzer_init();             // Initializes buzzer
+  led_init();                // Initializes the LED's 
+  enableWDTInterrupts();     // Enables the interrupts
   or_sr(0x18);
 }

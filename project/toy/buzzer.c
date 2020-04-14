@@ -1,6 +1,7 @@
 #include <msp430.h>
 #include "libTimer.h"
 #include "buzzer.h"
+#include "stateMachine.h"
 
 static int ironManSong = 0;
 static int firstSong = 0;
@@ -23,6 +24,7 @@ void buzzer_init()
     P2DIR = BIT6; /* enable output to speaker (P2.6) */
 }
 void ironManTheme(){
+  /* Plays the song that appears in IronMan */
   switch(ironManSong) {
   case 0: buzzer_set_period(750); ironManSong++; break;
   case 1:
@@ -50,6 +52,7 @@ void ironManTheme(){
 }
 
 void FirstTheme() {
+  /* Plays song using determined frequencies */
   switch(firstSong) {
   case 0:
   case 1:
@@ -62,6 +65,7 @@ void FirstTheme() {
 }
 
 void SecondTheme() {
+  /* Plays song using determined frequencies */
   switch(secondSong) {
   case 0: buzzer_set_period(950); secondSong++; break;
   case 1:
@@ -89,6 +93,7 @@ void SecondTheme() {
 }
 
 void starTheme() {
+  /* Plays the star song that appears in Super Mario Bros */
   switch(starSong) {
   case 0:
   case 1:

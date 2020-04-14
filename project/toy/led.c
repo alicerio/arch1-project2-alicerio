@@ -18,5 +18,5 @@ void led_update(){
     P1OUT &= (0xff - LEDS) | ledFlags; // clear bits for off leds
     P1OUT |= ledFlags; // set bits for on leds
   }
-  switch_state_changed = 0;
+  switch_state_changed = 0; // Checks if the state has changed
  }

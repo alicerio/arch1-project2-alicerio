@@ -3,8 +3,10 @@
 #include "led.h"
 #include "buzzer.h"
 #include "libTimer.h"
+#include "stateMachine.h"
 
-char switch_state_down, switch_state_changed, tempo; /* effectively boolean */
+char switch_state_down, tempo, switch_state_changed; /* Boolean operators */
+char switch_state;
 
 static char
 switch_update_interrupt_sense()
@@ -33,31 +35,32 @@ switch_interrupt_handler()
     buzzer_set_period(0);
     switch_state_down = 0;
   }
-  else if (!(p2val & SW4)) {
+  else if (!(p2val & SW4)) {     // Realized operations if switch 4 is pressed.
     tempo = 50;
     FirstTheme();
     switch_state_down = 1;
-    led_update();
+    switch_state = 4;
   }
-  else if (!(p2val & SW3)) {
+  else if (!(p2val & SW3)) {     // Realized operations if switch 3 is pressed.
     tempo = 22;
     starTheme();
     switch_state_down = 1;
-    led_update();
+    switch_state = 3;
   }
-  else if (!(p2val & SW2)) {
+  else if (!(p2val & SW2)) {     // Realized operations if switch 2 is pressed.
     tempo = 97;
     ironManTheme();
     switch_state_down = 1;
-    led_update();
+    switch_state = 2;
   }
-  else if (!(p2val & SW1)) {
+  else if (!(p2val & SW1)) {     // Realized operations if switch 1 is pressed.
     tempo = 120;
     SecondTheme();
     switch_state_down = 1;
-    led_update();
+    switch_state = 1;
   }
-  switch_state_changed = 1;
+   led_update();
+   switch_state_changed = 1;
 }
 
     
